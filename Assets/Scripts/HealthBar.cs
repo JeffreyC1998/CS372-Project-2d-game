@@ -23,7 +23,7 @@ public class HealthBar : MonoBehaviour
         transform.localScale = localScale;
         Vector3 temp = transform.position;
         temp.x = playerTransform.position.x + 13;
-        temp.y = playerTransform.position.y + 9;
+        temp.y = playerTransform.position.y + 6;
         
         temp.x += offset;
         temp.y += offset;
