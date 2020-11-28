@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Collectable
+  - Virus
+  - Hearts
+  - Interactable
+  - Win
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 466477917
+    locked: 0
+  - name: Passage
+    uniqueID: 3681509645
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Objects
+    uniqueID: 4261180021
+    locked: 0
+  - name: Rooms
+    uniqueID: 945927673
+    locked: 0
+  - name: Masks
+    uniqueID: 1764729
+    locked: 0
+  - name: Door
+    uniqueID: 1692601915
+    locked: 0
+  - name: Player
+    uniqueID: 3872125713
+    locked: 0
+  - name: Obstacle
+    uniqueID: 583368667
+    locked: 0
+  - name: InvisibleArea
+    uniqueID: 3538386193
+    locked: 0
+  - name: Border
+    uniqueID: 3707622153
+    locked: 0
+  - name: HealthBar
+    uniqueID: 1452350539
+    locked: 0
