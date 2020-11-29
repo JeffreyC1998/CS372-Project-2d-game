@@ -14,7 +14,7 @@ public class VirusMoveX : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(rb2d.transform.position.x < -52)
         {

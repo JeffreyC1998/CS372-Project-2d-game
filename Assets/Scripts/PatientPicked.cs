@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class PatientPicked : MonoBehaviour
 {
     Text mission2;
+    public static bool PatientArrive;
     // Start is called before the first frame update
     void Start()
     {
+        PatientArrive = false;
         mission2 = GetComponent<Text> ();
     }
 
@@ -18,6 +20,11 @@ public class PatientPicked : MonoBehaviour
         if(PlayerControl.pickPatient == true)
         {
             mission2.text = "Take this patient to the room in the bottom";
+        }
+
+        if(PatientArrive == true)
+        {
+            mission2.text = "Great! The patient is in the right position.";
         }
     }
 }

@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour
     public InterableObject currentInterObjScript = null;
     private HealthBar healthBar;
     public List<string> items;
-    public float speed = 60f;
+    public float speed = 6f;
     public static float health = 1f;
     public Animator animator;
     public Rigidbody2D rb2d;
@@ -18,6 +18,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pickPatient = false;
         items = new List<string>();
         rb2d = GetComponent<Rigidbody2D> ();
         healthBar = GameObject.Find("BarSprite").GetComponent<HealthBar>();
@@ -31,7 +32,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(NoticeController.Active == true)
         {
@@ -47,8 +48,20 @@ public class PlayerControl : MonoBehaviour
             animator.SetFloat("YSpeed",v);        
         }
 
-        
-
+    }
+    void Update()
+    {
+        if(currentInterObj)
+        {
+            if(currentInterObjScript.objectType == "sink")
+            {
+                if(currentInterObjScript.timeLeft > 0)
+                {
+                    currentInterObjScript.timeLeft -= Time.deltaTime;
+                }                  
+            }
+          
+        }
 
         if (health < 0)
         {
@@ -71,7 +84,7 @@ public class PlayerControl : MonoBehaviour
                 }
                 else
                 {
-                    print("The door can not open");
+                    InteractMessage.hintText.text = "The door can not be open";
                     InteractMessage.messageShow = true;
                     InteractMessage.doorUnopanable = true;
                 }
@@ -87,17 +100,25 @@ public class PlayerControl : MonoBehaviour
                 }
                 else if (currentInterObjScript.timeLeft > 0)
                 {
-                    print("You can interact with this sink 30s once");
+                    print(currentInterObjScript.timeLeft);
+                    InteractMessage.hintText.text = "You can interact with this sink 30s later";
                 }
             }
             if(currentInterObjScript.objectType == "patient")
             {
-                PatientScript.interacted = true;
-                pickPatient = true;
+                if(PatientScript.interacted == false)
+                {
+                    PatientScript.interacted = true;
+                    pickPatient = true;
+                }
+                else
+                {
+                    PatientScript.interacted = false;
+                    pickPatient = false;
+                }
             }
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Collectable"))
@@ -132,12 +153,18 @@ public class PlayerControl : MonoBehaviour
             {
                 if(currentInterObjScript.locked)
                 {
-                    InteractMessage.messageShow = true;
+                    InteractMessage.hintText.text = "Press i to interact";
                 }
             }
             else
-                InteractMessage.messageShow = true;
-            
+                InteractMessage.hintText.text = "Press i to interact";
+            if (currentInterObjScript.objectType == "patient")
+            {
+                if(PatientScript.interacted == false)
+                    InteractMessage.hintText.text = "Press i to take him";
+                else
+                    InteractMessage.hintText.text = "Press i to stop following";
+            }
         }
     }
     void OnTriggerExit2D(Collider2D collision)
@@ -147,7 +174,7 @@ public class PlayerControl : MonoBehaviour
             if(collision.gameObject == currentInterObj)
             {
                 currentInterObj = null;
-                InteractMessage.messageShow = false;
+                InteractMessage.hintText.text = "";
                 InteractMessage.doorUnopanable = false;
             }
         }

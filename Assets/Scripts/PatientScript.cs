@@ -5,18 +5,19 @@ using UnityEngine;
 public class PatientScript : MonoBehaviour
 {
     public int direction = -1;
-    public static bool interacted = false;
+    public static bool interacted;
     public float speed = 9;
     private Transform target;
 
     // Start is called before the first frame update
     void Start()
     {
+        interacted = false;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(interacted)
         {
@@ -25,18 +26,25 @@ public class PatientScript : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 
             }
-        }
-
-        
+        }    
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Win"))
         {
+            PatientPicked.PatientArrive = true;
             if(MaskCountScript.maskAmount == 3)
             {
                 MainController.win = true;
             }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Win"))
+        {
+            PatientPicked.PatientArrive = false;
         }
     }
 }

@@ -16,7 +16,7 @@ public class VirusMoveElse : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(rb2d.transform.position.y < 69 && rb2d.transform.position.y > 40 && rb2d.transform.position.x < -33)
         {

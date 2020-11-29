@@ -8,7 +8,7 @@ public class InterableObject : MonoBehaviour
     public bool openable;
     public bool locked;
     public GameObject invisibleArea;
-    public int timeLeft = 0;
+    public float timeLeft = 0;
     public Animator animator;
     // Start is called before the first frame update
     void update()
