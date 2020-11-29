@@ -18,6 +18,12 @@ public class StartPageController : MonoBehaviour
     {
         if(inputField.GetComponent<Text>().text != "" && inputField.GetComponent<Text>().text.Length <= 9)
         {
+            MaskCountScript.maskAmount = 0;
+            PatientScript.interacted = false;
+            MainController.win = false;
+            PlayerControl.health = 1f;
+            NoticeController.Active = false;
+            PlayerControl.heart_num = 1;
             SceneManager.LoadScene("MainScene");
         }
         else if(inputField.GetComponent<Text>().text == "")

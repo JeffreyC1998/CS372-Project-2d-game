@@ -101,6 +101,7 @@ public class GameController : MonoBehaviour
     {  
         //PlayerControl.heart_num++;
         MaskCountScript.maskAmount = 0;
+        PatientScript.interacted = false;
         SceneManager.LoadScene("MainScene");
         PlayerControl.health = 1f;
         

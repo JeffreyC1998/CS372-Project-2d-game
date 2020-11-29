@@ -10,4 +10,8 @@ public class StartController : MonoBehaviour
     {
         SceneManager.LoadScene("StartPage");
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

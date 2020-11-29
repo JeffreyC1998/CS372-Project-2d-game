@@ -12,7 +12,7 @@ public class DisplayName : MonoBehaviour
     {
         Username = StartPageController.Name;
         display = GetComponent<Text> ();
-        display.text = Username;
+        display.text += Username;
     }
 
     // Update is called once per frame

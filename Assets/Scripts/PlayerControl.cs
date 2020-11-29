@@ -21,28 +21,34 @@ public class PlayerControl : MonoBehaviour
         items = new List<string>();
         rb2d = GetComponent<Rigidbody2D> ();
         healthBar = GameObject.Find("BarSprite").GetComponent<HealthBar>();
-        print("The i is " + heart_num);
+
         for(int j = 0; j < heart_num; j++)
         {
             Destroy(GameObject.Find("Heart" + j));
         }
-        MainController.questionSet++;
-        Debug.Log(MainController.questionSet);
+        if(MainController.questionSet < 2)
+            MainController.questionSet++;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        if(NoticeController.Active == true)
+        {
+            float h = Input.GetAxis("Horizontal");
+            float v = Input.GetAxis("Vertical");
 
 
-        Vector3 tempVect = new Vector3(h, v, 0);
-        tempVect = tempVect.normalized * speed * Time.deltaTime;
-        rb2d.MovePosition(rb2d.transform.position + tempVect);
+            Vector3 tempVect = new Vector3(h, v, 0);
+            tempVect = tempVect.normalized * speed * Time.deltaTime;
+            rb2d.MovePosition(rb2d.transform.position + tempVect);    
+
+            animator.SetFloat("XSpeed",h);
+            animator.SetFloat("YSpeed",v);        
+        }
+
         
-        animator.SetFloat("XSpeed",h);
-        animator.SetFloat("YSpeed",v);
+
 
         if (health < 0)
         {
