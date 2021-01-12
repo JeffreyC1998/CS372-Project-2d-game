@@ -17,14 +17,14 @@ Once the nurse's health reached zero, there would be a quiz.The quiz consisted o
 ## Downloads:
 There are two kinds of files: source and executable. 
 To download the excutable files, please download the following:
--BeyondCovid_Data folder
--MonoBleedingEdge folder
--BeyondCovid.exe
--UnityCrashHandler64.exe or UnityCrashHandler32.exe
--UnityPlayer.dll
+- BeyondCovid_Data folder
+- MonoBleedingEdge folder
+- BeyondCovid.exe
+- UnityCrashHandler64.exe or UnityCrashHandler32.exe
+- UnityPlayer.dll
 
 The rest of the files are the source file including scripts.
 
 ## Technologies:
--C#
--Unity
+- C#
+- Unity
